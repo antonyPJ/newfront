@@ -1,6 +1,16 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
+import Glide from '@glidejs/glide';
+
 
 function HomePage() {
+    useEffect(() => {
+    const glide = new Glide('.glide');
+    glide.mount();
+    return () => {
+      glide.destroy();
+    };
+  }, []);
   return (
     <>
     <main>

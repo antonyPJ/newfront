@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import Glide from '@glidejs/glide';
+import React from 'react';
 import HomePage from './HomePage.jsx';
 import GamePage from './GamePage.jsx';
 import SearchPage from './SeachPage.jsx';
@@ -8,15 +7,8 @@ import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom
 import './App.css';
 
 function App() {
-  useEffect(() => {
-    const glide = new Glide('.glide');
-    glide.mount();
-    return () => {
-      glide.destroy();
-    };
-  }, []);
-
   return (
+    <>
     <Router>
     <div>
       <header>
@@ -29,19 +21,20 @@ function App() {
         </div>
       </header>
       <Outlet />
-      <footer>
-        <p>&copy; aVAlie seus jogos favoritos</p>
-        <p>&copy; 2023 grupo 4 Ltda | unifei | itajubá-MG</p>
-      </footer>
-    </div>
     <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/game" element={<GamePage />} />
           <Route path="/search" element={<SearchPage />} />
           
       </Routes>
+      <footer>
+        <p>&copy; aVAlie seus jogos favoritos</p>
+        <p>&copy; 2023 grupo 4 Ltda | unifei | itajubá-MG</p>
+      </footer>
+    </div>
     
     </Router>
+    </>
   );
 }
 
