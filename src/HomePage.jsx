@@ -1,9 +1,11 @@
 
 import React, { useEffect } from 'react';
 import Glide from '@glidejs/glide';
+import { useNavigate } from 'react-router-dom';
 
 
 function HomePage() {
+  const navigate = useNavigate();
     useEffect(() => {
     const glide = new Glide('.glide');
     glide.mount();
@@ -11,6 +13,11 @@ function HomePage() {
       glide.destroy();
     };
   }, []);
+
+  const handleCategoryClick = (category) => {
+    navigate(`/search/${category}`);
+  };
+
   return (
     <>
     <main>
@@ -26,14 +33,14 @@ function HomePage() {
 
         <h2 className="section-title">Principais Categorias</h2>
         <section id="game-categories">
-          <div className="category category1">FPS</div>
-          <div className="category category2">LUTA</div>
-          <div className="category category3">CORRIDA</div>
-          <div className="category category4">ESPORTES</div>
-          <div className="category category5">INDIE</div>
-          <div className="category category6">AVENTURA</div>
-          <div className="category category7">TERROR</div>
-          <div className="category category8">SUSPENSE</div>
+          <div className="category category1" onClick={() => handleCategoryClick('FPS')}>FPS</div>
+          <div className="category category2" onClick={() => handleCategoryClick('LUTA')}>LUTA</div>
+          <div className="category category3" onClick={() => handleCategoryClick('CORRIDA')}>CORRIDA</div>
+          <div className="category category4" onClick={() => handleCategoryClick('ESPORTES')}>ESPORTES</div>
+          <div className="category category5" onClick={() => handleCategoryClick('INDIE')}>INDIE</div>
+          <div className="category category6" onClick={() => handleCategoryClick('AVENTURA')}>AVENTURA</div>
+          <div className="category category7" onClick={() => handleCategoryClick('TERROR')}>TERROR</div>
+          <div className="category category8" onClick={() => handleCategoryClick('SUSPENSE')}>SUSPENSE</div>
         </section>
       </main>
     </>

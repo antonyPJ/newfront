@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import GameBox from './GameBox';
 
-function SearchPage({ match }) {
-  const { category } = match.params;
+function UserSearchPage({ searchQuery }) {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`BACKEND_URL/games?category=${category}`);
+        const response = await fetch(`BACKEND_URL/games?search=${searchQuery}`);
         const data = await response.json();
         setGames(data);
       } catch (error) {
@@ -17,11 +16,11 @@ function SearchPage({ match }) {
     };
 
     fetchData();
-  }, [category]);
+  }, [searchQuery]);
 
   return (
     <div>
-      <h2>Search Results for {category}</h2>
+      <h2>Search Results for "{searchQuery}"</h2>
       <div className="game-boxes">
         {games.map((game, index) => (
           <GameBox key={index} name={game.name} image={game.image} />
@@ -31,4 +30,4 @@ function SearchPage({ match }) {
   );
 }
 
-export default SearchPage;
+export default UserSearchPage;
