@@ -34,13 +34,13 @@ function HomePage() {
         <h2 className="section-title">Principais Categorias</h2>
         <section id="game-categories">
           <div className="category category1" onClick={() => handleCategoryClick('FPS')}>FPS</div>
-          <div className="category category2" onClick={() => handleCategoryClick('LUTA')}>LUTA</div>
-          <div className="category category3" onClick={() => handleCategoryClick('CORRIDA')}>CORRIDA</div>
-          <div className="category category4" onClick={() => handleCategoryClick('ESPORTES')}>ESPORTES</div>
-          <div className="category category5" onClick={() => handleCategoryClick('INDIE')}>INDIE</div>
-          <div className="category category6" onClick={() => handleCategoryClick('AVENTURA')}>AVENTURA</div>
-          <div className="category category7" onClick={() => handleCategoryClick('TERROR')}>TERROR</div>
-          <div className="category category8" onClick={() => handleCategoryClick('SUSPENSE')}>SUSPENSE</div>
+          <div className="category category2" onClick={() => handleCategoryClick('Luta')}>LUTA</div>
+          <div className="category category3" onClick={() => handleCategoryClick('Corrida')}>CORRIDA</div>
+          <div className="category category4" onClick={() => handleCategoryClick('Esportes')}>ESPORTES</div>
+          <div className="category category5" onClick={() => handleCategoryClick('Indie')}>INDIE</div>
+          <div className="category category6" onClick={() => handleCategoryClick('Aventura')}>AVENTURA</div>
+          <div className="category category7" onClick={() => handleCategoryClick('Terror')}>TERROR</div>
+          <div className="category category8" onClick={() => handleCategoryClick('Suspense')}>SUSPENSE</div>
         </section>
       </main>
     </>

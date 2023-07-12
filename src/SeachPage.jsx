@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import GameBox from './GameBox';
+import { useParams } from 'react-router-dom';
 
-function SearchPage({ match }) {
-  const { category } = match.params;
+function SearchPage({  }) {
+  const { genre } = useParams();
   const [games, setGames] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`BACKEND_URL/games?category=${category}`);
+        const response = await fetch(`http://localhost:3000/genre/${genre}`);
         const data = await response.json();
         setGames(data);
       } catch (error) {
@@ -17,11 +18,11 @@ function SearchPage({ match }) {
     };
 
     fetchData();
-  }, [category]);
+  }, [genre]);
 
   return (
     <div>
-      <h2>Search Results for {category}</h2>
+      <h2 className='search-result'>Search Results for {genre}</h2>
       <div className="game-boxes">
         {games.map((game, index) => (
           <GameBox key={index} name={game.name} image={game.image} />

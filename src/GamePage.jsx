@@ -18,10 +18,32 @@ function GamePage() {
     fetchGameData();
   }, []);
 
-  const handleSubmitReview = (event) => {
+  const handleSubmitReview = async (event) => {
     event.preventDefault();
-    // Submeter os dados da review pro backend
-    // Implementar a logica para mandar a review pro backend
+    const { email, name, score, review } = event.target.elements;
+
+    try {
+      const response = await fetch(`http://localhost:3000/review/:gamename`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.value,
+          name: name.value,
+          rating: parseInt(score.value),
+          description: review.value,
+        }),
+      });
+
+      if (response.ok) {
+        alert('Review submitted successfully!');
+      } else {
+        alert('Failed to submit review.');
+      }
+    } catch (error) {
+      console.log('Error submitting review:', error);
+    }
   };
 
   if (!gameData) {

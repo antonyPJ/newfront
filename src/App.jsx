@@ -8,13 +8,13 @@ import UserSearchPage from './UserSearchPage';
 import './App.css';
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [gamename, setgamename] = useState('');
 
   const handleSearch = (event) => {
     event.preventDefault();
-    if (searchQuery.trim() !== '') {
-      window.location.href = `/search/${searchQuery}`;
-      setSearchQuery('');
+    if (gamename.trim() !== '') {
+      window.location.href = `/search/${gamename}`;
+      setgamename('');
     }
   };
 
@@ -27,8 +27,8 @@ function App() {
               type="text"
               id="search-input"
               placeholder="Pesquisar..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              value={gamename}
+              onChange={(e) => setgamename(e.target.value)}
             />
             <button type="submit" id='search-button'>Pesquisar</button>
           </form>
@@ -36,8 +36,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/game" element={<GamePage />} />
-          <Route path="/search/:searchQuery" element={<UserSearchPage />} />
-          <Route path="/search/:category" element={<SearchPage />} />
+          <Route path="/search/:gamename" element={<UserSearchPage />} />
+          <Route path="/genre/:category" element={<SearchPage />} />
           <Route path="*" element={<Outlet />} />
         </Routes>
         <footer>
