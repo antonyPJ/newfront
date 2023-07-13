@@ -1,22 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function GamePage() {
-  const [gameData, setGameData] = useState(null);
-
-  useEffect(() => {
-    // Fetch dados do jogo do backend
-    const fetchGameData = async () => {
-      try {
-        const response = await fetch('BACKEND_URL/game');
-        const data = await response.json();
-        setGameData(data);
-      } catch (error) {
-        console.log('Error fetching game data:', error);
-      }
-    };
-
-    fetchGameData();
-  }, []);
+  const location = useLocation();
+  const gameData = location.state.game;
+  console.log(gameData)
 
   const handleSubmitReview = async (event) => {
     event.preventDefault();
@@ -37,12 +25,12 @@ function GamePage() {
       });
 
       if (response.ok) {
-        alert('Review submitted successfully!');
+        alert('Avaliação publicada!');
       } else {
-        alert('Failed to submit review.');
+        alert('Falha ao submeter avaliação');
       }
     } catch (error) {
-      console.log('Error submitting review:', error);
+      console.log('Erro ao submeter avaliação:', error);
     }
   };
 

@@ -1,10 +1,17 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
-function GameBox({ name, image }) {
+function GameBox({ game }) {
   return (
     <div className="game-box">
-      <img src={image} alt={name} />
-      <p>{name}</p>
+      <Link
+        to={{
+          pathname: `/game/${game.id}`,
+          state: { game },
+        }}
+      >
+        <img src={game.image} alt={game.name} />
+        <p>{game.name}</p>
+      </Link>
     </div>
   );
 }

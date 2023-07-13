@@ -35,7 +35,7 @@ function App() {
         </header>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/game" element={<GamePage />} />
+          <Route path="/game/:gameId" element={<GamePage />} />
           <Route path="/search/:gamename" element={<UserSearchPage />} />
           <Route path="/genre/:category" element={<SearchPage />} />
           <Route path="*" element={<Outlet />} />

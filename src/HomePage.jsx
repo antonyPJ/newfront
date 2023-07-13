@@ -7,7 +7,11 @@ import { useNavigate } from 'react-router-dom';
 function HomePage() {
   const navigate = useNavigate();
     useEffect(() => {
-    const glide = new Glide('.glide');
+    const glide = new Glide('.glide', {
+      type: 'carousel',
+      perView: 3,
+      focusAt: 'center',
+    });
     glide.mount();
     return () => {
       glide.destroy();

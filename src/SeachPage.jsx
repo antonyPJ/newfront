@@ -24,9 +24,9 @@ function SearchPage({  }) {
     <div>
       <h2 className='search-result'>Search Results for {genre}</h2>
       <div className="game-boxes">
-        {games.map((game, index) => (
-          <GameBox key={index} name={game.name} image={game.image} />
-        ))}
+      {games.map((game, index) => (
+        <GameBox key={index} game={game}/>
+      ))}
       </div>
     </div>
   );
